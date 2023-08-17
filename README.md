@@ -1,6 +1,10 @@
-A demonstration of Docker to implement a simple 3 tier architecture
+Uma demostração de uma aplicação simples com 3 camadas
 
-* frontend will be able to access the mid-tier
-* mid-tier will be able to access the db
+* frontend na docker network `frontend`
+* API na mid-tier em duas docker networks `frontend` e `backend`
+* backend banco de dados em mongodb para a aplicação na docker network `backend`
 
-In order to run this in docker, simply type ```docker-compose up``` at the command prompt. Docker will then create the [MongoDB](https://www.mongodb.com/) from the stock [mongo](https://hub.docker.com/_/mongo) image. The api uses [nodejs](https://nodejs.org/) with [express](http://expressjs.com/) and is built from a [node:alpine](https://hub.docker.com/_/node) image. The front end uses [ReactJS](https://reactjs.org/) and built from a [node:alpine](https://hub.docker.com/_/node) image.
+![image-20230816-201010](https://github.com/dmedeirosedglobo/docker-frontend-api-backend/assets/114950111/79610834-0260-4f0b-9864-c433780751b6)
+
+
+Para rodar esta aplicação em seu ambiente docker, é simples, ```docker-compose up --build``` no prompt de comando. O Docker realizará o build das imagens, incluíndo a instância do [MongoDB](https://www.mongodb.com/) do repositório [mongo](https://hub.docker.com/_/mongo). A api usa a imagem [nodejs](https://nodejs.org/) com [express](http://expressjs.com/) com build pela imagem base [node:alpine](https://hub.docker.com/_/node). O frontend usa [ReactJS](https://reactjs.org/) com base na imagem [node:alpine](https://hub.docker.com/_/node).
