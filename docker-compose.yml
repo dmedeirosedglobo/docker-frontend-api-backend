@@ -2,20 +2,23 @@ version: "3.8"
 services:
   web:
     build: ./frontend
+    image: webapp
     depends_on:
       - api
     ports:
       - "3000:3000"
     networks:
-      - network-backend
+      - frontend
   api:
-    build: ./backend
+    build: ./api
+    image: wepapi
     depends_on:
       - mongo
     ports:
       - "3001:3001"
     networks: 
-     - network-backend
+     - backend
+     - frontend
   
   mongo:
     image: mongo
@@ -29,10 +32,11 @@ services:
     # ports:
     #   - 27017:27017
     networks: 
-     - network-backend
+     - backend
 
 networks:
-  network-backend:
+  backend:
+  frontend:
 
 volumes: 
   mongodb_data:
